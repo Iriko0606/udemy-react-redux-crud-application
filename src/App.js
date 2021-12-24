@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PropTypes from 'prop-types';
+// class App extends Component {
+//   render() {
+//     return
+//         <React.Fragment>
+//           <label htmlFor="bar">bar</label>
+//           <></>
+//         </React.Fragment>
+//       ;
+//       // babelRepl
+//   }
+// }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const profiles = [
+        {name: "Taro", age: 10},
+        {name: "Hanako", age: 5},
+    ]
+    return (<div>
+        {
+          profiles.map((profile,index) =>{
+          return <User name ={profile.name} age={profile.age} key ={index} />
+          })
+        }
+    </div>)
 }
 
+const User = (props) => {
+    return <div>Iam {props.name}, and {props.age}years old!</div>
+}
+
+User.propTypes = {
+    name: PropTypes.string,
+    age: PropTypes.number.isRequired
+}
 export default App;
