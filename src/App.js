@@ -1,37 +1,26 @@
-import React from "react";
-import PropTypes from 'prop-types';
-// class App extends Component {
-//   render() {
-//     return
-//         <React.Fragment>
-//           <label htmlFor="bar">bar</label>
-//           <></>
-//         </React.Fragment>
-//       ;
-//       // babelRepl
-//   }
-// }
+import React , {Component} from 'react';
 
-const App = () => {
-    const profiles = [
-        {name: "Taro", age: 10},
-        {name: "Hanako", age: 5},
-    ]
-    return (<div>
-        {
-          profiles.map((profile,index) =>{
-          return <User name ={profile.name} age={profile.age} key ={index} />
-          })
-        }
-    </div>)
-}
+const App = () => (<Counter></Counter>)
+class Counter extends Component {
+    constructor(props){
+      super(props)
+      this.state = {count: 0}
+    }
+  handlePlusButton = () => {
+      this.setState({count: this.state.count + 1})
+  }
+  handleMinusButton = () => {
+    this.setState({count: this.state.count -1})
+  }
 
-const User = (props) => {
-    return <div>Iam {props.name}, and {props.age}years old!</div>
-}
 
-User.propTypes = {
-    name: PropTypes.string,
-    age: PropTypes.number.isRequired
-}
-export default App;
+  render() {
+    return (
+        <React.Fragment>
+            count: {this.state.count}
+            <button onClick={this.handlePlusButton}>+1</button>
+            <button onClick={this.handleMinusButton}>-1</button>
+        </React.Fragment>
+
+    )
+  }
