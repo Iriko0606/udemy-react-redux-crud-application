@@ -24,6 +24,3 @@ class Counter extends Component {
 
     )
   }
-}
-
-export default App;
